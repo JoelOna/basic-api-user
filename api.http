@@ -1,0 +1,23 @@
+GET http://localhost:3000/v1/users/65199fe5a784b008701baa34
+############# CREAR PELICULA
+POST http://localhost:3000/v1/users
+Content-Type:  application/json
+
+  {
+    "name": "Joel",
+    "second_name": "test",
+    "email" : "test@gmail.com",
+    "password": "password"
+   
+  }
+#########
+GET http://localhost:3000/v1/users
+#########
+
+DELETE  http://localhost:3000/v1/users
+Content-Type:  application/json
+
+  {
+   "_id":"65199fe5a784b008701baa34"
+   
+  }
