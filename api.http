@@ -4,7 +4,7 @@ POST http://localhost:3000/v1/users
 Content-Type:  application/json
 
   {
-    "name": "Joel",
+    "name": "Test hash",
     "second_name": "test",
     "email" : "test@gmail.com",
     "password": "password"
@@ -19,5 +19,16 @@ Content-Type:  application/json
 
   {
    "_id":"65199fe5a784b008701baa34"
+   
+  }
+
+###
+PUT http://localhost:3000/v1/users/651d86d383fc814a50e92de8
+
+Content-Type:  application/json
+
+  {
+    "second_name": "update test",
+    "email" : "test@gmail.com",
    
   }

@@ -20,8 +20,7 @@ class UserModel {
                 email:email,
                 password:password
             })
-            const newUser = await user.save()
-            return newUser
+           return user.save()
         } catch (error) {
             return error
         }
@@ -38,7 +37,22 @@ class UserModel {
 
       static async delete({_id}){
         return await User.findByIdAndDelete({_id})
-      }
+    }
+
+    static async updateUser({_id}, {user}){
+        try {
+            const userToUpdate = User.findByIdAndUpdate({_id},{user})
+            const user = new User({
+                name: name,
+                second_name: second_name,
+                email:email,
+                password:password
+            })
+           return user.save()
+        } catch (error) {
+            return error
+        }
+    }
 }
 
 module.exports = UserModel
