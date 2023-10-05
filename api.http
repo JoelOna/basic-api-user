@@ -23,12 +23,12 @@ Content-Type:  application/json
   }
 
 ###
-PUT http://localhost:3000/v1/users/651d86d383fc814a50e92de8
+PUT http://localhost:3000/v1/users/651d84fcbb9f1e04e2af5172
 
 Content-Type:  application/json
 
   {
-    "second_name": "update test",
-    "email" : "test@gmail.com",
-   
-  }
+    "name": "Joel UPDATE",
+    "second_name": "test",
+    "email": "test@gmail.com",
+  },

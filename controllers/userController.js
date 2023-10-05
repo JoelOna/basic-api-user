@@ -52,16 +52,20 @@ class UserController{
 
     static async update(req,res,next){
         const {name,second_name,email,password} = req.body    
-        console.log(password)     
+      
         const {_id} = req.params
+        console.log({_id}) 
         const userBefore = User.findById({_id})
         try {
-           const samePassword = bcrypt.compare(password, userBefore.password)
+            if (password){
+           const samePassword = await bcrypt.compare({password}, userBefore.password)
+           console.log(samePassword)
            if (!samePassword) {
             bcrypt.hash(password , 12)
             .then((hashedPassword)=>{
                 const user = {name: name,second_name: second_name,email: email,password: hashedPassword}
-                const userToUpdate = UserModel.updateUser({_id},{user})
+                const userToUpdate = UserModel.updateUser({_id},user)
+                console.log(userToUpdate)
                 return res.json(userToUpdate)
             
             })
@@ -69,11 +73,11 @@ class UserController{
                 console.log(error)
                 next()
             })
-          
-           }
-           const user = {name: name,second_name: second_name,email: email,password: password}
-           const userToUpdate = UserModel.updateUser({_id},{user})
-           
+           }}
+           const user = {name: name,second_name: second_name,email: email}
+           const userToUpdate = UserModel.updateUser({_id},user)
+           console.log(userToUpdate)
+           return res.json(userToUpdate)
             
         } catch (error) {
             console.log(error)

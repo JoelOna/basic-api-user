@@ -39,16 +39,23 @@ class UserModel {
         return await User.findByIdAndDelete({_id})
     }
 
-    static async updateUser({_id}, {user}){
+    static async updateUser({_id}, input){
         try {
-            const userToUpdate = User.findByIdAndUpdate({_id},{user})
-            const user = new User({
-                name: name,
-                second_name: second_name,
-                email:email,
-                password:password
-            })
-           return user.save()
+            // const user2 = new User({
+            //     name: input.name,
+            //     second_name: input.second_name,
+            //     email: input.email,
+            //     password: input.password
+            // })
+            
+            // const user = await User.findById({_id})
+            // console.log(user)
+            // const userUpdated = await user.update(user2)
+            // console.log(userUpdated)
+            const userUpdated = await User.findOneAndUpdate({_id},input,{ new: true })
+            console.log('User model to update: ',userUpdated)
+            return userUpdated
+         
         } catch (error) {
             return error
         }
