@@ -51,7 +51,9 @@ class UserController{
     }
 
     static async update(req,res,next){
-        const {name,second_name,email,password} = req.body    
+        const {name,second_name,email,password} = req.body   
+        console.log(req.body) 
+        console.log(name , second_name, email, password)
       
         const {_id} = req.params
         console.log({_id}) 

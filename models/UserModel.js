@@ -39,7 +39,7 @@ class UserModel {
         return await User.findByIdAndDelete({_id})
     }
 
-    static async updateUser({_id}, input){
+    static async updateUser({_id}, {input}){
         try {
             // const user2 = new User({
             //     name: input.name,
@@ -52,7 +52,9 @@ class UserModel {
             // console.log(user)
             // const userUpdated = await user.update(user2)
             // console.log(userUpdated)
-            const userUpdated = await User.findOneAndUpdate({_id},input,{ new: true })
+          
+            console.log(input)
+            const userUpdated = await User.findOneAndUpdate({_id},{input},{ new: true })
             console.log('User model to update: ',userUpdated)
             return userUpdated
          
